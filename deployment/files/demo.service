@@ -1,0 +1,10 @@
+[Unit]
+Description=Demo Web App
+Requires=network.target
+After=syslog.target network.target
+[Service]
+WorkingDirectory=/opt/demo
+ExecStart=/opt/demo/bin/demo
+User=root
+[Install]
+WantedBy=multi-user.target
