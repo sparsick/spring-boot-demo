@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.sparsick</groupId>
-    <artifactId>cloud-demo-app</artifactId>
+    <artifactId>spring-boot-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-demo-app</name>
+    <name>spring-boot-example</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
