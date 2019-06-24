@@ -16,8 +16,8 @@
         name: /opt/demo
         state: directory
     - name: unarchive demo
-      unarchive:
-        src: ../target/spring-boot-example-0.0.1-SNAPSHOT-assembly.zip
+      copy:
+        src: ../target/spring-boot-example-0.0.1-SNAPSHOT.jar
         dest: /opt/demo
     - name: create service demo
       copy:
