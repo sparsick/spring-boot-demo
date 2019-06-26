@@ -1,5 +1,7 @@
 package com.github.sparsick.clouddemoapp;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,17 @@ public class CustomerController {
     @GetMapping("/customer")
     public String viewAllCustomer(Model model) {
         model.addAttribute("customers", customerRepository.allCustomers());
+        model.addAttribute("ipAddress", inspectLocalHost());
 
         return "customer/customer.list.html";
+    }
+
+    private String inspectLocalHost() {
+        try {
+            return Inet4Address.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @GetMapping("/customer/new")
