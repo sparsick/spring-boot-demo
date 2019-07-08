@@ -34,7 +34,6 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
-            <!--            <version>${micrometer.version}</version>-->
         </dependency>
 
         <dependency>
@@ -47,12 +46,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
-
-
-
-
-
+        
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
