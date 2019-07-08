@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: '2'
+services:
+  prometheus:
+    image: prom/prometheus:v2.9.1
+    ports:
+      - 9090:9090
+    volumes:
+      - prometheus_data:/prometheus
+      - ./prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    image: grafana/grafana:6.1.4
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=pass
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana-config/provisioning:/etc/grafana/provisioning
+      - ./grafana-config/dashboards:/etc/grafana/dashboards
+    depends_on:
+      - prometheus
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
