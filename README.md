@@ -3,7 +3,7 @@ Spring Boot Demo Application
 
 ```
 mvn clean install
-mvn spring:boot run
+mvn spring-boot:run
 ```
 
 Applikation URL: `http://localhost:8080/customer`
