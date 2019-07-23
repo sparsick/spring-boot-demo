@@ -3,7 +3,7 @@ Spring Boot Demo Application
 
 ```
 mvn clean install
-mvn spring:boot run
+mvn spring-boot:run
 ```
 
 Applikation URL: `http://localhost:8080/customer`
@@ -13,7 +13,7 @@ API für Prometheus: `http://localhost:8080/actuator/prometheus`
 # Application Monitoring
 
 ```
-cd application monitoring
+cd application-monitoring
 docker-compose up
 ```
 
