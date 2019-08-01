@@ -1,4 +1,4 @@
-package com.github.sparsick.clouddemoapp;
+package com.github.sparsick.springbootexample;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CloudDemoAppApplicationTests {
+public class HeroApplicationTests {
 
 	@Test
 	public void contextLoads() {

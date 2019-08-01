@@ -11,10 +11,7 @@
 <body>
 
 <main role="main" class="container">
-    <h1>Customer Table</h1>
-    <div class="row">
-        <p> Customer data are coming from <span th:text="${ipAddress}"> xxx.xxx.xxx.xxx </span> </p>
-    </div>
+    <h1>Hero List</h1>
     <div class="row col-md-7 table-responsive">
         <table id="customerTable" class="table">
             <thead>
@@ -24,16 +21,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="customer, rowStat: ${customers}"
+            <tr th:each="hero, rowStat: ${customers}"
                 th:style="${rowStat.odd} ? 'color: gray' : 'color: black;'">
-                <td th:text="${customer.name}">Jack</td>
-                <td th:text="${customer.city}">New York</td>
+                <td th:text="${hero.name}">Jack</td>
+                <td th:text="${hero.city}">New York</td>
             </tr>
             </tbody>
         </table>
     </div>
     <div class="row">
-        <a role="button" class="btn btn-outline-secondary" th:href="@{/customer/new}">Add new Customer</a>
+        <a role="button" class="btn btn-outline-secondary" th:href="@{/hero/new}">Add new Hero</a>
     </div>
 
 </main>

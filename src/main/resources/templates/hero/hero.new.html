@@ -9,9 +9,9 @@
 </head>
 <body>
 <main class="container">
-    <h1>New Customer</h1>
+    <h1>New Hero</h1>
 
-    <form th:action="@{/customer/new}" method="post" th:object="${customer}">
+    <form th:action="@{/hero/new}" method="post" th:object="${hero}">
         <div class="form-group row">
             <label for="nameInput" class="col-sm-1 col-form-label">Name</label>
             <input id="nameInput" type="text" class="mb-1" th:field="*{name}">
@@ -21,7 +21,7 @@
             <input id="cityInput" type="text" class="mb-1"  th:field="*{city}">
         </div>
         <div class="form-group">
-            <p><input role="button" class="btn btn-outline-secondary" type="submit" value="Add customer"></p>
+            <p><input role="button" class="btn btn-outline-secondary" type="submit" value="Add hero"></p>
         </div>
     </form>
 </main>

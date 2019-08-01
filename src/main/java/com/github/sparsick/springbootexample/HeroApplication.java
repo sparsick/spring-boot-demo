@@ -1,13 +1,13 @@
-package com.github.sparsick.clouddemoapp;
+package com.github.sparsick.springbootexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CloudDemoAppApplication {
+public class HeroApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CloudDemoAppApplication.class, args);
+		SpringApplication.run(HeroApplication.class, args);
 	}
 
 }

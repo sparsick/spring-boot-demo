@@ -1,19 +1,19 @@
-package com.github.sparsick.clouddemoapp;
+package com.github.sparsick.springbootexample;
 
 import java.util.Objects;
 
-public class Customer {
+public class Hero {
 
     private String name;
 
     private String city;
 
-    public Customer(String name, String city) {
+    public Hero(String name, String city) {
         this.name = name;
         this.city = city;
     }
 
-    public Customer() {
+    public Hero() {
 
     }
 
@@ -39,9 +39,9 @@ public class Customer {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(name, customer.name) &&
-                Objects.equals(city, customer.city);
+        Hero hero = (Hero) o;
+        return Objects.equals(name, hero.name) &&
+                Objects.equals(city, hero.city);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Hero{" +
                 "name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 '}';
