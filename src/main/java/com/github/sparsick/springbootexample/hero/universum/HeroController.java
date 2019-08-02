@@ -1,4 +1,4 @@
-package com.github.sparsick.springbootexample;
+package com.github.sparsick.springbootexample.hero.universum;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,21 +14,21 @@ public class HeroController {
     private HeroRepository heroRepository;
 
     @GetMapping("/hero")
-    public String viewAllCustomer(Model model) {
-        model.addAttribute("customers", heroRepository.allCustomers());
+    public String viewAllHeros(Model model) {
+        model.addAttribute("heros", heroRepository.allHeros());
 
         return "hero/hero.list.html";
     }
 
     @GetMapping("/hero/new")
-    public String newCustomer(Model model){
+    public String newHero(Model model){
         model.addAttribute("hero", new Hero());
         return "hero/hero.new.html";
     }
 
     @PostMapping("/hero/new")
-    public String addNewCustomer(@ModelAttribute("hero") Hero hero){
-        heroRepository.addCustomer(hero);
+    public String addNewHero(@ModelAttribute("hero") Hero hero){
+        heroRepository.addHero(hero);
         return "redirect:/hero";
     }
 

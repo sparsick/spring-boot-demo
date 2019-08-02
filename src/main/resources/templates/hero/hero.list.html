@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Cloud Demo</title>
+    <title>Hero Demo</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
@@ -21,7 +21,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="hero, rowStat: ${customers}"
+            <tr th:each="hero, rowStat: ${heros}"
                 th:style="${rowStat.odd} ? 'color: gray' : 'color: black;'">
                 <td th:text="${hero.name}">Jack</td>
                 <td th:text="${hero.city}">New York</td>

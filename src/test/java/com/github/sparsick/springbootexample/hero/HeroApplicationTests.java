@@ -1,4 +1,4 @@
-package com.github.sparsick.springbootexample;
+package com.github.sparsick.springbootexample.hero;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

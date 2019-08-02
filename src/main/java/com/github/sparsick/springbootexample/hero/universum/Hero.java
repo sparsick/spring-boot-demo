@@ -1,4 +1,4 @@
-package com.github.sparsick.springbootexample;
+package com.github.sparsick.springbootexample.hero.universum;
 
 import java.util.Objects;
 

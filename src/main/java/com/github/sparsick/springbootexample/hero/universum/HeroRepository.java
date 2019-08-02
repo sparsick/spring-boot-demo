@@ -1,4 +1,4 @@
-package com.github.sparsick.springbootexample;
+package com.github.sparsick.springbootexample.hero.universum;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,11 +17,11 @@ public class HeroRepository {
         heroes.add(new Hero("Superman", "Metropolis"));
     }
 
-    public void addCustomer(Hero hero) {
+    public void addHero(Hero hero) {
         heroes.add(hero);
     }
 
-    public Collection<Hero> allCustomers(){
+    public Collection<Hero> allHeros(){
         return new HashSet<>(heroes);
     }
 
