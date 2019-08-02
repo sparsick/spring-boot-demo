@@ -20,6 +20,15 @@
             <label for="cityInput" class="col-sm-1 col-form-label">City</label>
             <input id="cityInput" type="text" class="mb-1"  th:field="*{city}">
         </div>
+        <div class="form-group row">
+            <label for="universumInput" class="col-sm-1 col-form-label">Universum</label>
+            <select id="universumInput" class="mb-1">
+                <option th:each="universum : ${T(com.github.sparsick.springbootexample.hero.universum.ComicUniversum).values()}"
+                        th:value="${universum}"
+                        th:text="${universum}">
+                </option>
+            </select>
+        </div>
         <div class="form-group">
             <p><input role="button" class="btn btn-outline-secondary" type="submit" value="Add hero"></p>
         </div>

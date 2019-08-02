@@ -8,9 +8,12 @@ public class Hero {
 
     private String city;
 
-    public Hero(String name, String city) {
+    private ComicUniversum universum;
+
+    public Hero(String name, String city, ComicUniversum universum) {
         this.name = name;
         this.city = city;
+        this.universum = universum;
     }
 
     public Hero() {
@@ -31,6 +34,14 @@ public class Hero {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public ComicUniversum getUniversum() {
+        return universum;
+    }
+
+    public void setUniversum(ComicUniversum universum) {
+        this.universum = universum;
     }
 
     @Override

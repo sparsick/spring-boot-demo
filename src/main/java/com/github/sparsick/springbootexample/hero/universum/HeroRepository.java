@@ -13,8 +13,8 @@ public class HeroRepository {
 
     @PostConstruct
     public void init(){
-        heroes.add(new Hero("Batman", "Gotham City"));
-        heroes.add(new Hero("Superman", "Metropolis"));
+        heroes.add(new Hero("Batman", "Gotham City", ComicUniversum.DC_COMICS));
+        heroes.add(new Hero("Superman", "Metropolis", ComicUniversum.DC_COMICS));
     }
 
     public void addHero(Hero hero) {
