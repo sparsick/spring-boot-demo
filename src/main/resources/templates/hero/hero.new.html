@@ -29,6 +29,10 @@
                 </option>
             </select>
         </div>
+        <div class="form-group row">
+            <label for="persistInput" class="col-sm-1 col-form-label">Persist?</label>
+            <input id="persistInput" class="mb-1" type="checkbox" th:object="${persist}" />
+        </div>
         <div class="form-group">
             <p><input role="button" class="btn btn-outline-secondary" type="submit" value="Add hero"></p>
         </div>
