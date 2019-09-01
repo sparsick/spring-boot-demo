@@ -16,4 +16,9 @@ public class PersistHeroRepository implements HeroRepository {
     public Collection<Hero> allHeros() {
         return Collections.emptyList();
     }
+
+    @Override
+    public String getName() {
+        return "Persist";
+    }
 }

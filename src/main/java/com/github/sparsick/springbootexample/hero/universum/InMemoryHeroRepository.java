@@ -18,6 +18,11 @@ public class InMemoryHeroRepository implements HeroRepository {
     }
 
     @Override
+    public String getName() {
+        return "In Memory";
+    }
+
+    @Override
     public void addHero(Hero hero) {
         heroes.add(hero);
     }

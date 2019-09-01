@@ -12,7 +12,6 @@ import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,11 +22,11 @@ public class HeroController {
     @Autowired
     private Set<HeroRepository> heroRepositories;
 
-    private Map<Class, HeroRepository> heroRepositoryFactory = new HashMap<>();
+    private Map<String, HeroRepository> heroRepositoryFactory = new HashMap<>();
 
     @PostConstruct
     void init(){
-        heroRepositories.forEach(heroRepository -> heroRepositoryFactory.put(heroRepository.getClass(), heroRepository));
+        heroRepositories.forEach(heroRepository -> heroRepositoryFactory.put(heroRepository.getName(), heroRepository));
     }
 
     @GetMapping("/hero")
@@ -49,15 +48,22 @@ public class HeroController {
 
     @GetMapping("/hero/new")
     public String newHero(Model model){
-        model.addAttribute("hero", new Hero());
+        model.addAttribute("newHero", new NewHeroModel());
+        model.addAttribute("repos", heroRepositoryFactory.keySet());
         return "hero/hero.new.html";
     }
 
     @PostMapping("/hero/new")
-    public String addNewHero(@ModelAttribute("hero") Hero hero){
-        heroRepositoryFactory.get(InMemoryHeroRepository.class).addHero(hero);
+    public String addNewHero(@ModelAttribute("newHero") NewHeroModel newHeroModel) {
+        HeroRepository heroRepository = findHeroRepository(newHeroModel.getRepository());
+        heroRepository.addHero(newHeroModel.getHero());
         return "redirect:/hero";
     }
+
+    private HeroRepository findHeroRepository(String repositoryName) {
+        return heroRepositoryFactory.get(repositoryName);
+    }
+
 
     private String inspectLocalHost() {
         try {
