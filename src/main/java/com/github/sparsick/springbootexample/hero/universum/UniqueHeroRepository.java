@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryHeroRepository implements HeroRepository {
+public class UniqueHeroRepository implements HeroRepository {
 
     private Set<Hero> heroes = new HashSet<>();
 
@@ -19,7 +19,7 @@ public class InMemoryHeroRepository implements HeroRepository {
 
     @Override
     public String getName() {
-        return "In Memory";
+        return "Unique";
     }
 
     @Override
