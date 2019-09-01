@@ -46,18 +46,17 @@ public class Hero {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Hero hero = (Hero) o;
         return Objects.equals(name, hero.name) &&
-                Objects.equals(city, hero.city);
+                Objects.equals(city, hero.city) &&
+                universum == hero.universum;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, city);
+        return Objects.hash(name, city, universum);
     }
 
     @Override
@@ -65,6 +64,7 @@ public class Hero {
         return "Hero{" +
                 "name='" + name + '\'' +
                 ", city='" + city + '\'' +
+                ", universum=" + universum +
                 '}';
     }
 }

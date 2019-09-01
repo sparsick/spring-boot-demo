@@ -26,7 +26,7 @@
                 th:style="${rowStat.odd} ? 'color: gray' : 'color: black;'">
                 <td th:text="${hero.name}">Jack</td>
                 <td th:text="${hero.city}">New York</td>
-                <td th:text="${hero.universum}">Marvel</td>
+                <td th:text="${hero.universum.displayName}">Marvel</td>
             </tr>
             </tbody>
         </table>

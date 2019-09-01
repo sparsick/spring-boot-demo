@@ -4,14 +4,13 @@ public enum ComicUniversum {
     MARVEL("Marvel"),
     DC_COMICS ("DC Comic");
 
-    private String name;
+    private String displayName;
 
-    ComicUniversum(String name) {
-        this.name = name;
+    ComicUniversum(String displayName) {
+        this.displayName = displayName;
     }
 
-    @Override
-    public String toString() {
-        return name;
+    public String getDisplayName() {
+        return displayName;
     }
 }

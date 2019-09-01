@@ -22,10 +22,10 @@
         </div>
         <div class="form-group row">
             <label for="universumInput" class="col-sm-1 col-form-label">Universum</label>
-            <select id="universumInput" class="mb-1">
+            <select id="universumInput" class="mb-1" th:field="*{universum}">
                 <option th:each="universum : ${T(com.github.sparsick.springbootexample.hero.universum.ComicUniversum).values()}"
                         th:value="${universum}"
-                        th:text="${universum}">
+                        th:text="${universum.displayName}">
                 </option>
             </select>
         </div>
