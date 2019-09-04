@@ -1,32 +1,24 @@
 package com.github.sparsick.springbootexample.hero.universum;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.annotation.PostConstruct;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 public class HeroController {
 
-    @Autowired
-    private Set<HeroRepository> heroRepositories;
+    private Map<String, HeroRepository> heroRepositoryFactory;
 
-    private Map<String, HeroRepository> heroRepositoryFactory = new HashMap<>();
-
-    @PostConstruct
-    void init(){
-        heroRepositories.forEach(heroRepository -> heroRepositoryFactory.put(heroRepository.getName(), heroRepository));
+    public HeroController(Map<String, HeroRepository> heroRepositoryFactory) {
+        this.heroRepositoryFactory = heroRepositoryFactory;
     }
 
     @GetMapping("/hero")
@@ -40,7 +32,7 @@ public class HeroController {
 
     private List<Hero> collectAllHeros() {
         List<Hero> allHeros = new ArrayList<>();
-        for(HeroRepository heroRepository: heroRepositories) {
+        for(HeroRepository heroRepository: heroRepositoryFactory.values()) {
             allHeros.addAll(heroRepository.allHeros());
         }
         return allHeros;
