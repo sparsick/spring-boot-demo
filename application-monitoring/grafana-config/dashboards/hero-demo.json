@@ -203,7 +203,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "http_server_requests_seconds_max{uri=\"/hero\"}",
+          "expr": "http_server_requests_seconds_max{uri=\"/hero\",status='200'}",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Hero List",
@@ -295,7 +295,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_server_requests_seconds_count{uri=\"/hero\"}[5s])",
+          "expr": "rate(http_server_requests_seconds_count{uri=\"/hero\", status=\"200\"}[5s])",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Request to Hero List",
@@ -351,7 +351,7 @@
       }
     }
   ],
-  "refresh": "1s",
+  "refresh": "5s",
   "schemaVersion": 18,
   "style": "dark",
   "tags": [],
@@ -391,5 +391,5 @@
   "timezone": "browser",
   "title": "Hero Demo",
   "uid": "IbeUOKSWk",
-  "version": 1
-}
+  "version": 13
+} 
