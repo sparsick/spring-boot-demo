@@ -15,10 +15,10 @@ import java.util.Map;
 @Controller
 public class HeroController {
 
-    private Map<String, HeroRepository> heroRepositoryFactory;
+    private HeroRepositoryStrategy heroRepositoryStrategy;
 
-    public HeroController(Map<String, HeroRepository> heroRepositoryFactory) {
-        this.heroRepositoryFactory = heroRepositoryFactory;
+    public HeroController(HeroRepositoryStrategy heroRepositoryStrategy) {
+        this.heroRepositoryStrategy = heroRepositoryStrategy;
     }
 
     @GetMapping("/hero")
@@ -32,7 +32,7 @@ public class HeroController {
 
     private List<Hero> collectAllHeros() {
         List<Hero> allHeros = new ArrayList<>();
-        for(HeroRepository heroRepository: heroRepositoryFactory.values()) {
+        for(HeroRepository heroRepository: heroRepositoryStrategy.findAllHeroRepositories()) {
             allHeros.addAll(heroRepository.allHeros());
         }
         return allHeros;
@@ -41,21 +41,16 @@ public class HeroController {
     @GetMapping("/hero/new")
     public String newHero(Model model){
         model.addAttribute("newHero", new NewHeroModel());
-        model.addAttribute("repos", heroRepositoryFactory.keySet());
+        model.addAttribute("repos", heroRepositoryStrategy.findAllHeroRepositoryStrategyNames());
         return "hero/hero.new.html";
     }
 
     @PostMapping("/hero/new")
     public String addNewHero(@ModelAttribute("newHero") NewHeroModel newHeroModel) {
-        HeroRepository heroRepository = findHeroRepository(newHeroModel.getRepository());
+        HeroRepository heroRepository = heroRepositoryStrategy.findHeroRepository(newHeroModel.getRepository());
         heroRepository.addHero(newHeroModel.getHero());
         return "redirect:/hero";
     }
-
-    private HeroRepository findHeroRepository(String repositoryName) {
-        return heroRepositoryFactory.get(repositoryName);
-    }
-
 
     private String inspectLocalHost() {
         try {
