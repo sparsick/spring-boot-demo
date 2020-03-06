@@ -29,15 +29,6 @@
                 </option>
             </select>
         </div>
-        <div class="form-group row">
-            <label for="repositoryChoose" class="col-sm-1 col-form-label">Repository</label>
-            <select id="repositoryChoose" class="mb-1" th:field="*{repository}">
-                <option th:each="repo : ${repos}"
-                        th:value="${repo}"
-                        th:text="${repo}">
-                </option>
-            </select>
-        </div>
         <div class="form-group">
             <p><input role="button" class="btn btn-outline-secondary" type="submit" value="Add hero"></p>
         </div>

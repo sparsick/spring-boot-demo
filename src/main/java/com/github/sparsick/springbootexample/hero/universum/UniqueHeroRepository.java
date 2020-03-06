@@ -1,23 +1,16 @@
 package com.github.sparsick.springbootexample.hero.universum;
 
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.PostConstruct;
-
-import io.micrometer.core.instrument.Counter;
-import io.micrometer.core.instrument.MeterRegistry;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class UniqueHeroRepository implements HeroRepository {
 
     private Set<Hero> heroes = new HashSet<>();
-    private Counter addCounter;
-
-    public UniqueHeroRepository(MeterRegistry meterRegistry) {
-        addCounter = meterRegistry.counter("hero.repository.unique");
-    }
 
     @PostConstruct
     public void init() {
@@ -32,7 +25,6 @@ public class UniqueHeroRepository implements HeroRepository {
 
     @Override
     public void addHero(Hero hero) {
-        addCounter.increment();
         heroes.add(hero);
     }
 
