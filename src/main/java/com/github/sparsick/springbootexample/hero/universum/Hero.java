@@ -64,7 +64,7 @@ public class Hero {
         return "Hero{" +
                 "name='" + name + '\'' +
                 ", city='" + city + '\'' +
-                ", universum=" + universum +
+                ", universum=" + universum.getDisplayName() +
                 '}';
     }
 }

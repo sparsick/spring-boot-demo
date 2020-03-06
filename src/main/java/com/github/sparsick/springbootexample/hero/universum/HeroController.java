@@ -2,6 +2,7 @@ package com.github.sparsick.springbootexample.hero.universum;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Controller
 public class HeroController {
@@ -39,16 +38,18 @@ public class HeroController {
     @GetMapping("/hero/list")
     public String viewHeros(@RequestParam(value="search", required = false)String search, Model model) {
         searchCounter.increment();
-        Collection<Hero> allHeros = collectAllHeros();
-        model.addAttribute("heros", allHeros);
+        model.addAttribute("heros", collectHeros(search));
         model.addAttribute("ipAddress", inspectLocalHost());
 
         return "hero/hero.list.html";
     }
 
-    private Collection<Hero> collectAllHeros() {
-        Collection<Hero> allHeros = heroRepository.allHeros();
-        return allHeros;
+    private Collection<Hero> collectHeros(String search) {
+        if(StringUtils.isBlank(search) || StringUtils.isEmpty(search)) {
+            return heroRepository.allHeros();
+        } else {
+            return heroRepository.findHerosBySearchCriteria(search);
+        }
     }
 
     @GetMapping("/hero/new")

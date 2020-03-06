@@ -9,4 +9,6 @@ public interface HeroRepository {
     void addHero(Hero hero);
 
     Collection<Hero> allHeros();
+
+    Collection<Hero> findHerosBySearchCriteria(String searchCriteria);
 }
