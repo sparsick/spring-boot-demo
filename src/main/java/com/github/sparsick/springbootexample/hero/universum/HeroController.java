@@ -5,12 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class HeroController {
@@ -22,7 +22,13 @@ public class HeroController {
     }
 
     @GetMapping("/hero")
-    public String viewAllHeros(Model model) {
+    public String viewStartPage(Model model){
+        model.addAttribute("ipAddress", inspectLocalHost());
+        return "hero/hero.search.html";
+    }
+
+    @GetMapping("/hero/list")
+    public String viewHeros(@RequestParam("search")String search, Model model) {
         List<Hero> allHeros = collectAllHeros();
         model.addAttribute("heros", allHeros);
         model.addAttribute("ipAddress", inspectLocalHost());
