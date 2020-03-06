@@ -108,18 +108,18 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(hero_repository_duplicate_total[60s])",
+          "expr": "rate(hero_usage_add_total[60s])",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
-          "legendFormat": "Duplicate Hero Repository",
+          "legendFormat": "Add Hero Feature",
           "refId": "A"
         },
         {
-          "expr": "rate(hero_repository_unique_total[60s])",
+          "expr": "rate(hero_usage_search_total[60s])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Unique Hero Repository",
+          "legendFormat": "Search Hero Feature",
           "refId": "B"
         }
       ],
@@ -127,7 +127,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Hero Repository",
+      "title": "Hero Feature",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -391,5 +391,5 @@
   "timezone": "browser",
   "title": "Hero Demo",
   "uid": "IbeUOKSWk",
-  "version": 13
-} 
+  "version": 15
+}
