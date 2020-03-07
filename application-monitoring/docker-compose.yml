@@ -2,14 +2,14 @@
 version: '2'
 services:
   prometheus:
-    image: prom/prometheus:v2.9.1
+    image: prom/prometheus:v2.16.0
     ports:
       - 9090:9090
     volumes:
       - prometheus_data:/prometheus
       - ./prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml
   grafana:
-    image: grafana/grafana:6.1.4
+    image: grafana/grafana:6.6.2
     ports:
       - 3000:3000
     environment:

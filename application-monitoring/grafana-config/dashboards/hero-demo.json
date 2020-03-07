@@ -65,7 +65,7 @@
       ],
       "timeFrom": "1m",
       "timeShift": "1m",
-      "title": "Hero List Request Time",
+      "title": "Hero Search Request Time",
       "type": "gauge"
     },
     {
@@ -210,10 +210,12 @@
           "refId": "A"
         },
         {
-          "expr": "http_server_requests_seconds_max{uri=\"/actuator/prometheus\"}",
+          "expr": "http_server_requests_seconds_max{uri=\"/actuator/prometheus\", exception=\"None\"}",
           "format": "time_series",
+          "hide": false,
+          "instant": false,
           "intervalFactor": 1,
-          "legendFormat": "Metrics",
+          "legendFormat": "Metric",
           "refId": "B"
         }
       ],
@@ -295,10 +297,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_server_requests_seconds_count{uri=\"/hero\", status=\"200\"}[5s])",
+          "expr": "rate(http_server_requests_seconds_count{uri=\"/hero/list\", status=\"200\"}[5s])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "Request to Hero List",
+          "legendFormat": "Hero List",
           "refId": "A"
         },
         {
@@ -307,6 +309,13 @@
           "intervalFactor": 1,
           "legendFormat": "Add new Hero",
           "refId": "B"
+        },
+        {
+          "expr": "rate(http_server_requests_seconds_count{uri=\"/hero\", method=\"GET\"}[5s])",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Hero Search View",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -314,6 +323,105 @@
       "timeRegions": [],
       "timeShift": null,
       "title": "Hero Request per Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "hero_repository_experiment_all_hero_runs_total{match = \"no\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Run Without Match",
+          "refId": "A"
+        },
+        {
+          "expr": "hero_repository_experiment_all_hero_runs_total{match = \"yes\"}",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Run With Match",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(hero_repository_experiment_all_hero_runs_total)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Total Run",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Hero Repository All Hero Experiment",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -391,5 +499,5 @@
   "timezone": "browser",
   "title": "Hero Demo",
   "uid": "IbeUOKSWk",
-  "version": 15
+  "version": 1
 }
