@@ -37,7 +37,6 @@ public class HeroController {
 
     @GetMapping("/hero/list")
     public String viewHeros(@RequestParam(value="search", required = false)String search, Model model) {
-        searchCounter.increment();
         model.addAttribute("heros", collectHeros(search));
         model.addAttribute("ipAddress", inspectLocalHost());
 
@@ -48,6 +47,7 @@ public class HeroController {
         if(StringUtils.isBlank(search) || StringUtils.isEmpty(search)) {
             return heroRepository.allHeros();
         } else {
+            searchCounter.increment();
             return heroRepository.findHerosBySearchCriteria(search);
         }
     }

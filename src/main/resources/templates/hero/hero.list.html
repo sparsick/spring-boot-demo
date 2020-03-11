@@ -6,6 +6,7 @@
     <title>Hero Demo</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
 </head>
 
 <body>
@@ -33,10 +34,10 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <a role="button" class="btn btn-outline-secondary" th:href="@{/hero/new}">Add new hero</a>
+            <a role="button" class="btn btn-outline-secondary" th:href="@{/hero/new}"><i class='fas fa-user-shield'></i> Add new hero</a>
         </div>
         <div class="col-sm">
-            <a role="button" class="btn btn-outline-secondary" th:href="@{/hero}">Go to search</a>
+            <a role="button" class="btn btn-outline-secondary" th:href="@{/hero}"><i class='fas fa-search'></i> Go to search</a>
         </div>
     </div>
     <div class="row">
