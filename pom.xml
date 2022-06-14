@@ -143,6 +143,44 @@
                     </images>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>io.kokuwa.maven</groupId>
+                <artifactId>helm-maven-plugin</artifactId>
+                <version>6.3.0</version>
+                <configuration>
+                    <chartDirectory>${project.basedir}/deployment/helm-charts</chartDirectory>
+                    <chartVersion>${project.version}</chartVersion>
+                    <!-- This is the related section to use local binary with auto-detection enabled. -->
+                    <useLocalHelmBinary>true</useLocalHelmBinary>
+                    <!-- This is the related section to configure upload repos -->
+                    <uploadRepoStable>
+                        <name>helm-release</name>
+                        <url>http://localhost:8002/repository/helm-release/</url>
+                        <type>NEXUS</type>
+                    </uploadRepoStable>
+                    <uploadRepoSnapshot>
+                        <name>helm-snapshot</name>
+                        <url>http://localhost:8002/repository/helm-snapshot/</url>
+                        <type>NEXUS</type>
+                    </uploadRepoSnapshot>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-chart</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>upload-chart</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>upload</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
