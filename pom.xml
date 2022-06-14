@@ -153,7 +153,7 @@
                     <chartVersion>${project.version}</chartVersion>
                     <helmVersion>3.8.1</helmVersion>
                     <!-- This is the related section to use local binary with auto-detection enabled. -->
-                    <useLocalHelmBinary>true</useLocalHelmBinary>
+                    <!--  <useLocalHelmBinary>true</useLocalHelmBinary> -->
                     <!-- This is the related section to configure upload repos -->
                     <uploadRepoStable>
                         <name>helm-release</name>
