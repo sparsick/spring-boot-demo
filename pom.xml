@@ -141,6 +141,7 @@
                             </build>
                         </image>
                     </images>
+                    <pushRegistry>localhost:6000</pushRegistry>
                 </configuration>
             </plugin>
             <plugin>
@@ -183,4 +184,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <layout>default</layout>
+            <url>http://localhost:8002/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>release</id>
+            <layout>default</layout>
+            <url>http://localhost:8002/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 </project>
