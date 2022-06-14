@@ -21,4 +21,4 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-maven
       - name: 'Build'
-        run: mvn -V --no-transfer-progress clean verify --fail-at-end
+        run: mvn -V --no-transfer-progress helm:init clean verify --fail-at-end
