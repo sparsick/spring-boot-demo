@@ -1,14 +1,13 @@
 package com.github.sparsick.springbootexample.hero.universum;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Repository
-class MongoDbHeroRepository implements HeroRepository {
+public class MongoDbHeroRepository implements HeroRepository {
 
 
     private HeroMongoRepository mongoRepository;
