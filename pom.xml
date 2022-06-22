@@ -118,6 +118,10 @@
                     <layers>
                         <enabled>true</enabled>
                     </layers>
+                    <environmentVariables>
+                        <MONGODB_ENABLED>true</MONGODB_ENABLED>
+                        <MONGODB_URI>mongodb://test:test123@localhost/test</MONGODB_URI>
+                    </environmentVariables>
                 </configuration>
             </plugin>
             <plugin>
@@ -156,7 +160,7 @@
                     <chartDirectory>${project.basedir}/deployment/helm-charts</chartDirectory>
                     <chartVersion>${project.version}</chartVersion>
                     <helmVersion>3.8.1</helmVersion>
-                    <!-- This is the related section to use local binary with auto-detection enabled. -->
+                    <!-- This is the related section to use local-env binary with auto-detection enabled. -->
                     <useLocalHelmBinary>true</useLocalHelmBinary>
                     <!-- This is the related section to configure upload repos -->
                     <uploadRepoStable>
