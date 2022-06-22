@@ -19,8 +19,5 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root123
-      MONGO_INITDB_USERNAME: test
-      MONGO_INITDB_PASSWORD: test123
-      MONGO_INITDB_DATABASE: test
     volumes:
       - ./local-env/:/docker-entrypoint-initdb.d/
