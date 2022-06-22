@@ -36,4 +36,8 @@ tolerations: []
 affinity: {}
 spring_boot_demo_chart: {}
 
+mongodb:
+  enabled: false
+  uri: mongodb://test:test@localhost/test
+
 

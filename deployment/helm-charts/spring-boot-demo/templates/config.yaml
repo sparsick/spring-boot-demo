@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "spring-boot-demo.fullname" . }}-config
+  namespace: {{ include "spring-boot-demo.namespaceName" . }}
+  labels:
+  {{- include "spring-boot-demo.labels" . | nindent 4 }}
+data:
+  MONGODB_URI: "{{ .Values.mongodb.uri }}"
+  MONGODB_ENABLED:  "{{ .Values.mongodb.enabled }}"

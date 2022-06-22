@@ -14,6 +14,8 @@ spec:
   {{- include "spring-boot-demo.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/config.yaml") . | sha256sum }}
       labels:
     {{- include "spring-boot-demo.selectorLabels" . | nindent 8 }}
     spec:
@@ -47,6 +49,9 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         args: [{{ .Values.spring_boot_demo_chart.container_args }}]
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        envFrom:
+          - configMapRef:
+              name: {{ include "spring-boot-demo.fullname" . }}-config
         volumeMounts:
         - mountPath: /tmp
           name: tmp-volume
