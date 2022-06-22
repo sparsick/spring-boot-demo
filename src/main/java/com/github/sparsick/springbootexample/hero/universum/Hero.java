@@ -1,8 +1,13 @@
 package com.github.sparsick.springbootexample.hero.universum;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Objects;
 
 public class Hero {
+
+    @Id
+    private String id;
 
     private String name;
 

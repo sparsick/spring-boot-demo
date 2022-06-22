@@ -3,6 +3,7 @@ package com.github.sparsick.springbootexample.hero.universum;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class HeroController {
 
     private Counter addCounter;
 
-    public HeroController(HeroRepository heroRepository, MeterRegistry meterRegistry) {
+    public HeroController(@Qualifier("heroRepository") HeroRepository heroRepository, MeterRegistry meterRegistry) {
         this.heroRepository = heroRepository;
         this.searchCounter = meterRegistry.counter("hero.usage.search");
         this.addCounter = meterRegistry.counter("hero.usage.add");
