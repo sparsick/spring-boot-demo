@@ -6,6 +6,11 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/x-forwarded-prefix: "/"
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location ~* "^/actuator/" {
+          deny all;
+          return 403;
+        }
 spec:
   rules:
     - host: {{ .Values.ingress.host }}
