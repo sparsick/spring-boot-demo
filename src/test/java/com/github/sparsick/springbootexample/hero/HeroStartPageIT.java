@@ -1,6 +1,8 @@
 package com.github.sparsick.springbootexample.hero;
 
 
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -21,12 +23,16 @@ import static org.testcontainers.Testcontainers.exposeHostPorts;
 public class HeroStartPageIT {
 
     @Container
-    private BrowserWebDriverContainer<?> chromeBrowser = new BrowserWebDriverContainer<>()
+    private static final BrowserWebDriverContainer<?> chromeBrowser = new BrowserWebDriverContainer<>() // one browser for all tests
             .withCapabilities(new ChromeOptions())
             .withAccessToHost(true);
 
     @LocalServerPort
     private int heroPort;
+
+    @Before
+    void setUp(){
+    }
 
     @Test
     void titleIsHeroSearchMachine(){
@@ -38,7 +44,26 @@ public class HeroStartPageIT {
 
         assertThat(title.getText().trim())
                 .isEqualTo("Hero Search Machine");
+    }
 
+    @Test
+    void searchForHero(){
+        exposeHostPorts(heroPort);
+        RemoteWebDriver driver = chromeBrowser.getWebDriver();
+
+        driver.get("http://host.testcontainers.internal:" + heroPort + "/hero");
+        WebElement formTextField = driver.findElement(By.className("form-control"));
+        formTextField.sendKeys("Batman");
+
+        WebElement searchButton = driver.findElement(By.id("button-search"));
+        searchButton.click();
+
+        WebElement title = driver.findElement(By.tagName("h1"));
+
+
+
+        assertThat(title.getText().trim())
+                .isEqualTo("Hero List");
     }
 
 
