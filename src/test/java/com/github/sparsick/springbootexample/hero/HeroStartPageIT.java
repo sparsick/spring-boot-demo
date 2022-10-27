@@ -1,8 +1,7 @@
 package com.github.sparsick.springbootexample.hero;
 
 
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,63 +19,53 @@ import static org.testcontainers.Testcontainers.exposeHostPorts;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HeroStartPageIT {
+class HeroStartPageIT {
 
     @Container
-    private static final BrowserWebDriverContainer<?> chromeBrowser = new BrowserWebDriverContainer<>() // one browser for all tests
+    private static final BrowserWebDriverContainer<?> chromeBrowserContainer = new BrowserWebDriverContainer<>() // one browser for all tests
             .withCapabilities(new ChromeOptions())
             .withAccessToHost(true);
 
     @LocalServerPort
     private int heroPort;
 
-    @Before
+    private RemoteWebDriver browser;
+
+
+    @BeforeEach
     void setUp(){
+        exposeHostPorts(heroPort);
+        browser = chromeBrowserContainer.getWebDriver();
+
+        browser.get("http://host.testcontainers.internal:" + heroPort + "/hero");
     }
 
     @Test
     void titleIsHeroSearchMachine(){
-        exposeHostPorts(heroPort);
-        RemoteWebDriver driver = chromeBrowser.getWebDriver();
-
-        driver.get("http://host.testcontainers.internal:" + heroPort + "/hero");
-        WebElement title = driver.findElement(By.tagName("h1"));
-
+        WebElement title = browser.findElement(By.tagName("h1"));
         assertThat(title.getText().trim())
                 .isEqualTo("Hero Search Machine");
     }
 
     @Test
     void searchForHero(){
-        exposeHostPorts(heroPort);
-        RemoteWebDriver driver = chromeBrowser.getWebDriver();
-
-        driver.get("http://host.testcontainers.internal:" + heroPort + "/hero");
-        WebElement formTextField = driver.findElement(By.className("form-control"));
+        WebElement formTextField = browser.findElement(By.id("search"));
         formTextField.sendKeys("Batman");
 
-        WebElement searchButton = driver.findElement(By.id("button-search"));
+        WebElement searchButton = browser.findElement(By.id("button-search"));
         searchButton.click();
 
-        WebElement title = driver.findElement(By.tagName("h1"));
-
-
-
+        WebElement title = browser.findElement(By.tagName("h1"));
         assertThat(title.getText().trim())
                 .isEqualTo("Hero List");
     }
 
     @Test
     void addNewHero(){
-        exposeHostPorts(heroPort);
-        RemoteWebDriver driver = chromeBrowser.getWebDriver();
-
-        driver.get("http://host.testcontainers.internal:" + heroPort + "/hero");
-        WebElement addNewHeroLink = driver.findElement(By.id("button-add"));
+        WebElement addNewHeroLink = browser.findElement(By.id("button-add"));
         addNewHeroLink.click();
 
-        WebElement title = driver.findElement(By.tagName("h1"));
-
+        WebElement title = browser.findElement(By.tagName("h1"));
         assertThat(title.getText().trim())
                 .isEqualTo("New Hero");
     }
