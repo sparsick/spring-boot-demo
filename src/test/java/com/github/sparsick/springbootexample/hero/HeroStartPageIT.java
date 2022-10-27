@@ -66,5 +66,20 @@ public class HeroStartPageIT {
                 .isEqualTo("Hero List");
     }
 
+    @Test
+    void addNewHero(){
+        exposeHostPorts(heroPort);
+        RemoteWebDriver driver = chromeBrowser.getWebDriver();
+
+        driver.get("http://host.testcontainers.internal:" + heroPort + "/hero");
+        WebElement addNewHeroLink = driver.findElement(By.id("button-add"));
+        addNewHeroLink.click();
+
+        WebElement title = driver.findElement(By.tagName("h1"));
+
+        assertThat(title.getText().trim())
+                .isEqualTo("New Hero");
+    }
+
 
 }
