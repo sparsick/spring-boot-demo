@@ -11,7 +11,7 @@
 
     <groupId>com.github.sparsick</groupId>
     <artifactId>spring-boot-example</artifactId>
-    <version>1.5.0-SNAPSHOT</version>
+    <version>1.6.0-SNAPSHOT</version>
     <name>spring-boot-example</name>
     <description>Demo project for Spring Boot</description>
 
@@ -195,7 +195,7 @@
                 <configuration>
                     <chartDirectory>${project.basedir}/deployment/helm-charts</chartDirectory>
                     <chartVersion>${project.version}</chartVersion>
-                    <helmVersion>3.8.1</helmVersion>
+                    <helmVersion>3.9.3</helmVersion>
                     <!-- This is the related section to use local-env binary with auto-detection enabled. -->
                     <useLocalHelmBinary>true</useLocalHelmBinary>
                     <!-- This is the related section to configure upload repos -->
