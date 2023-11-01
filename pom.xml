@@ -17,7 +17,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <selenium.version>4.11.0</selenium.version>
+        <selenium.version>4.14.1</selenium.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
