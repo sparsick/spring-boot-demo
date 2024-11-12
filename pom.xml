@@ -195,7 +195,7 @@
                 <configuration>
                     <chartDirectory>${project.basedir}/deployment/helm-charts</chartDirectory>
                     <chartVersion>${project.version}</chartVersion>
-                    <helmVersion>3.15.1</helmVersion>
+                    <helmVersion>3.26.2</helmVersion>
                     <!-- This is the related section to use local-env binary with auto-detection enabled. -->
                     <useLocalHelmBinary>true</useLocalHelmBinary>
                     <!-- This is the related section to configure upload repos -->
