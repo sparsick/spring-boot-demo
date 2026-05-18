@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.14</version>
+        <version>4.0.6</version>
     </parent>
 
     <groupId>com.github.sparsick</groupId>
     <artifactId>spring-boot-example</artifactId>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
     <name>spring-boot-example</name>
     <description>Demo project for Spring Boot</description>
 
