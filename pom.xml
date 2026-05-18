@@ -138,7 +138,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.13.0</version>
+                    <version>3.15.0</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
@@ -163,7 +163,7 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.45.1</version>
+                <version>0.48.1</version>
                 <executions>
                     <execution>
                         <id>docker-build</id>
@@ -191,7 +191,7 @@
             <plugin>
                 <groupId>io.kokuwa.maven</groupId>
                 <artifactId>helm-maven-plugin</artifactId>
-                <version>6.16.0</version>
+                <version>6.17.0</version>
                 <configuration>
                     <chartDirectory>${project.basedir}/deployment/helm-charts</chartDirectory>
                     <chartVersion>${project.version}</chartVersion>
