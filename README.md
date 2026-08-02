@@ -1,5 +1,8 @@
 # Demo
 
+This repository is moved to https://codeberg.org/sparsick/spring-boot-demo
+
+
 ![Build Status](https://github.com/sparsick/spring-boot-demo/workflows/MavenBuild/badge.svg)
 
 Spring Boot Demo Application
